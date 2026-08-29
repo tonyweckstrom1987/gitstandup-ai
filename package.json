@@ -1,0 +1,30 @@
+{
+  "name": "gitstandup-ai",
+  "version": "1.0.0",
+  "description": "Muuntaa Git-commit-historian AI:n avulla luettavaksi standup-, LinkedIn- tai oppimispäiväkirjayhteenvedoksi.",
+  "main": "index.js",
+  "bin": {
+    "gitstandup-ai": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "cli",
+    "standup",
+    "ai",
+    "ollama"
+  ],
+  "author": "Tony Weckström",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "dotenv": "^17.4.2",
+    "simple-git": "^3.36.0"
+  }
+}
