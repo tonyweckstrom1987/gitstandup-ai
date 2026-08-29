@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 
 const { Command } = require("commander");
 const path = require("path");
 const { collectCommits } = require("../lib/git");
-const { buildPrompt } = require("../lib/prompts");
+const { buildPrompt, stripPreamble } = require("../lib/prompts");
 
 const program = new Command();
 
@@ -64,7 +64,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(summary);
+  console.log(stripPreamble(summary));
 }
 
 main();
