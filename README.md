@@ -53,10 +53,45 @@ Tietoisesti pidetty yksinkertaisena: Git-historian lukeminen (`simple-git`) ja y
 
 ## Rakenne
 
-- `bin/cli.js` — komentorivin jäsennys ja pääsilmukka
-- `lib/git.js` — Git-historian haku (`simple-git`)
-- `lib/prompts.js` — promptin rakennus per kohdeprofiili + preambelin siivous
-- `lib/ollama.js` / `lib/claude.js` — kaksi vaihdettavaa generointibackendia
+```
+bin/cli.js       komentorivin jäsennys (commander) ja pääsilmukka
+lib/git.js       Git-historian haku (simple-git), --days-ikkunan suodatus
+lib/prompts.js   promptin rakennus per kohdeprofiili + preambelin siivous
+lib/ollama.js    generointibackend: paikallinen Ollama-palvelin
+lib/claude.js    generointibackend: Anthropic Claude API
+test/            node:test-testit jokaiselle yllä olevalle moduulille
+.github/
+  workflows/
+    ci.yml       aja testit joka pushissa ja pull requestissa
+```
+
+Kaikki `--target`-profiilit (`slack`, `linkedin`, `markdown`) käyttävät samaa
+`buildPrompt`-funktiota eri ohjeteksteillä — ei erillistä logiikkaa per
+profiili, ks. `lib/prompts.js`.
+
+## Testit
+
+Testit on kirjoitettu Node.js:n sisäänrakennetulla `node:test`-moduulilla
+(ei ulkoista testikehystä), samassa "ei ylimääräisiä riippuvuuksia"
+-hengessä kuin loppu projekti.
+
+```bash
+npm test
+```
+
+Kattaa:
+
+- `lib/prompts.js` — promptin rakennus per kohdeprofiili, preambelin siivous
+- `lib/git.js` — commit-historian haku, `--days`-ikkunan suodatus, virheet
+  (repo ei ole olemassa, ei yhtään committia)
+- `lib/ollama.js` / `lib/claude.js` — onnistunut generointi ja virhetilanteet
+  (fetch epäonnistuu, virheellinen API-vastaus, puuttuva API-avain) mockatulla
+  `fetch`-funktiolla
+- `bin/cli.js` — komentoriviargumenttien validointi ja poistumiskoodit
+  (spawnattuna erillisenä prosessina)
+
+CI (`.github/workflows/ci.yml`) ajaa testit automaattisesti joka pushilla ja
+pull requestilla Node.js-versioilla 18, 20 ja 22.
 
 ## Tunnetut rajoitukset
 

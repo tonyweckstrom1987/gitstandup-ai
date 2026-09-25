@@ -7,7 +7,7 @@
     "gitstandup-ai": "./bin/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "keywords": [
     "git",
@@ -23,7 +23,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "commander": "^15.0.0",
+    "commander": "^13.1.0",
     "dotenv": "^17.4.2",
     "simple-git": "^3.36.0"
   }
