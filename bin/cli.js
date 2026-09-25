@@ -33,8 +33,8 @@ async function main() {
   }
 
   const repoPath = path.resolve(opts.repo);
-  const days = parseInt(opts.days, 10);
-  if (Number.isNaN(days) || days < 1) {
+  const days = Number(opts.days);
+  if (!Number.isInteger(days) || days < 1) {
     console.error(`--days pitää olla positiivinen kokonaisluku, saatiin: ${opts.days}`);
     process.exit(1);
   }
