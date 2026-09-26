@@ -17,7 +17,7 @@
     "ollama"
   ],
   "author": "Tony Weckström",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "engines": {
     "node": ">=18"

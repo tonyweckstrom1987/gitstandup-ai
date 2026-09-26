@@ -2,6 +2,9 @@
 
 Lukee Git-commit-historiasi ja muuntaa sen tekoälyn avulla luettavaksi yhteenvedoksi — Slack-standup-viestiksi, LinkedIn-päivitykseksi tai oppimispäiväkirjamerkinnäksi.
 
+[![CI](https://github.com/tonyweckstrom1987/gitstandup-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/tonyweckstrom1987/gitstandup-ai/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 > *"Kyllästyin miettimään joka aamu standupissa mitä tein eilen — joten rakensin CLI-työkalun joka tekee sen puolestani."*
 
 ## Käyttö
